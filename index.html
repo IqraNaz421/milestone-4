@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Editable Resume</h1>
+        </div>
+        <!-- Form Section -->
+        <div class="form-section" id="formSection">
+            <h2 class="section-title">Basic Information</h2>
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="text" id="title" placeholder="Professional Title" required> <br>
+
+            <h2 class="section-title">Profile</h2>
+            <input type="text" id="profile" placeholder="Write about yourself" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Phone" required>
+            <input type="text" id="location" placeholder="Location" required>
+
+            <h2 class="section-title">Profile Image</h2>
+            <input type="file" id="profileImage" accept="image/*" onchange="previewImage(event)">
+
+            <h2 class="section-title">Education</h2>
+            <input type="text" id="school" placeholder="School Name" required>
+            <input type="text" id="degree" placeholder="Degree" required>
+            <input type="text" id="eduDate" placeholder="Education Date" required>
+
+            <h2 class="section-title">Work Experience</h2>
+            <textarea id="experience" placeholder="Work Experience" required></textarea>
+
+            <h2 class="section-title">Skills</h2>
+            <input type="text" id="skills" placeholder="Skills (comma-separated)" required>
+
+            <h2 class="section-title">Languages</h2>
+            <input type="text" id="languages" placeholder="Languages (comma-separated)" required>
+
+            <h2 class="section-title">Social Links</h2>
+            <input type="url" id="github" placeholder="GitHub URL" required>
+            <input type="url" id="linkedin" placeholder="LinkedIn URL" required>
+
+            <button onclick="generateResume()">Generate Resume</button>
+        </div>
+
+        <!-- Resume Preview Section -->
+        <div class="resume-preview" id="resume" style="display: none;">
+            <div class="header">
+                <img id="resumeProfileImage" src="https://via.placeholder.com/100" alt="Profile" class="profile-img">
+                <h1 id="previewName">Your Name</h1>
+                <p id="previewTitle">Your Title</p>
+            </div>
+
+            <div class="resume-layout">
+                <!-- Left Column -->
+                <div class="resume-left">
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">person</span>PROFILE</h2>
+                        <p id="previewProfile"></p>
+                    </div>
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">contact_mail</span>CONTACT</h2>
+                        <p id="previewContact"></p>
+                    </div>
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">school</span>EDUCATION</h2>
+                        <p id="previewEducation"></p>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="resume-right">
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">work</span>WORK EXPERIENCE</h2>
+                        <p id="previewExperience"></p>
+                    </div>
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">star</span>SKILLS</h2>
+                        <div id="previewSkills" class="skills-container"></div>
+                    </div>
+                    <div class="resume-section">
+                        <h2 class="section-title"><span class="material-icons icon">language</span>LANGUAGES</h2>
+                        <div id="previewLanguages" class="languages-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" id="previewGithub" target="_blank">GitHub</a>
+                <a href="#" id="previewLinkedin" target="_blank">LinkedIn</a>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="editResume()" style="padding: 10px 20px; background-color: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Edit
+                </button>
+            </div>
+            
+           
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
